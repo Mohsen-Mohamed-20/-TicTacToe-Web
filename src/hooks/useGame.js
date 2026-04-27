@@ -16,15 +16,15 @@ function aiStyle(mode, current) {
   return mode === 'minimax_random' && current === 'O' ? 'random' : 'minimax';
 }
 
-function buildPreview(board, mode, current, difficulty, gameOver) {
+function buildPreview(board, mode, current, difficulty, gameOver, previewDepthLimit) {
   if (!isAiTurn(mode, current, gameOver)) {
     return { scores: {}, evaluatedOrder: [] };
   }
 
-  return previewAiMoves(board, current, difficulty, aiStyle(mode, current));
+  return previewAiMoves(board, current, difficulty, aiStyle(mode, current), previewDepthLimit);
 }
 
-export function useGame({ mode, difficulty, initialNames, initialScores, sound, enabled = true }) {
+export function useGame({ mode, difficulty, initialNames, initialScores, sound, enabled = true, previewDepthLimit = 9 }) {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [current, setCurrent] = useState('X');
   const [winner, setWinner] = useState(null);
@@ -51,7 +51,7 @@ export function useGame({ mode, difficulty, initialNames, initialScores, sound, 
       setAiWaiting(false);
       setAiStats(createEmptyAiResult());
       setLastAiMove(null);
-      setPreview(buildPreview(Array(9).fill(null), mode, 'X', difficulty, false));
+      setPreview(buildPreview(Array(9).fill(null), mode, 'X', difficulty, false, previewDepthLimit));
       saveSettings({ scoreboard: nextScores });
     },
     [difficulty, mode, scores],
@@ -76,9 +76,9 @@ export function useGame({ mode, difficulty, initialNames, initialScores, sound, 
 
       const nextCurrent = opponent(playedMark);
       setCurrent(nextCurrent);
-      setPreview(buildPreview(nextBoard, mode, nextCurrent, difficulty, false));
+      setPreview(buildPreview(nextBoard, mode, nextCurrent, difficulty, false, previewDepthLimit));
     },
-    [difficulty, mode, scores, sound],
+    [difficulty, mode, previewDepthLimit, scores, sound],
   );
 
   const makeMove = useCallback(
@@ -107,8 +107,8 @@ export function useGame({ mode, difficulty, initialNames, initialScores, sound, 
   }, [difficulty, mode]);
 
   useEffect(() => {
-    setPreview(buildPreview(board, mode, current, difficulty, gameOver));
-  }, [board, current, difficulty, gameOver, mode]);
+    setPreview(buildPreview(board, mode, current, difficulty, gameOver, previewDepthLimit));
+  }, [board, current, difficulty, gameOver, mode, previewDepthLimit]);
 
   useEffect(() => {
     if (!enabled || !activeAi || aiTimer.current) return undefined;

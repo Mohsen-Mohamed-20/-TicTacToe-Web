@@ -16,6 +16,7 @@ export default function App() {
   const [settings, setSettings] = useState(() => loadSettings());
   const [screen, setScreen] = useState('menu');
   const [nameModalOpen, setNameModalOpen] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(() => (typeof window === 'undefined' ? false : window.matchMedia('(max-width: 640px)').matches));
   const sound = useSound(settings.soundOn);
 
   const names = useMemo(() => {
@@ -30,12 +31,21 @@ export default function App() {
     initialScores: settings.scoreboard,
     sound,
     enabled: screen === 'game',
+    previewDepthLimit: isSmallScreen ? 4 : 9,
   });
 
   useEffect(() => {
     document.documentElement.lang = settings.language;
     document.documentElement.dir = settings.language === 'ar' ? 'rtl' : 'ltr';
   }, [settings.language]);
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 640px)');
+    const update = () => setIsSmallScreen(media.matches);
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
 
   function patchSettings(patch) {
     setSettings((current) => {

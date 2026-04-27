@@ -105,3 +105,22 @@ button {
     transition-duration: 0.001ms !important;
   }
 }
+
+@media (max-width: 640px) {
+  .cyber-grid {
+    animation: none;
+    background:
+      linear-gradient(180deg, rgba(7, 9, 18, 0.98), rgba(13, 16, 29, 0.98)),
+      repeating-linear-gradient(0deg, rgba(22, 31, 58, 0.32) 0 1px, transparent 1px 44px);
+  }
+
+  .shadow-cyan,
+  .shadow-pink,
+  .shadow-amber {
+    box-shadow: 0 0 12px rgba(0, 225, 255, 0.14) !important;
+  }
+
+  .icon-button {
+    backdrop-filter: none;
+  }
+}
