@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #070912;
+  font-family: Rajdhani, "Segoe UI", Tahoma, Arial, sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #070912;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+.cyber-grid {
+  background:
+    linear-gradient(180deg, rgba(7, 9, 18, 0.92), rgba(18, 18, 36, 0.96)),
+    repeating-linear-gradient(0deg, rgba(22, 31, 58, 0.55) 0 1px, transparent 1px 36px),
+    repeating-linear-gradient(115deg, rgba(22, 31, 58, 0.45) 0 1px, transparent 1px 48px);
+  animation: drift 18s linear infinite;
+}
+
+.neon-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-width: 1px;
+  border-radius: 0.75rem;
+  background: rgba(16, 21, 39, 0.86);
+  padding: 0.65rem 0.9rem;
+  font-family: Orbitron, Rajdhani, "Segoe UI", Tahoma, Arial, sans-serif;
+  font-weight: 800;
+  line-height: 1.1;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.neon-button:hover {
+  transform: translateY(-1px);
+  background: rgba(21, 28, 50, 0.96);
+}
+
+.neon-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.icon-button {
+  display: inline-grid;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(7, 9, 18, 0.8);
+  color: #fff;
+  font-family: Orbitron, Rajdhani, "Segoe UI", Tahoma, Arial, sans-serif;
+  font-weight: 900;
+  box-shadow: 0 0 18px rgba(0, 225, 255, 0.16);
+  backdrop-filter: blur(12px);
+}
+
+@keyframes drift {
+  from {
+    background-position: 0 0, 0 0, 0 0;
+  }
+
+  to {
+    background-position: 0 0, 0 72px, 96px 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+}
