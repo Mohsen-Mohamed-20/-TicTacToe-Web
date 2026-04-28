@@ -55,11 +55,11 @@ export function defaultPlayerNames(mode, difficulty, language = 'en') {
     language === 'ar'
       ? {
           human: 'لاعب',
-          ai: 'الذكاء',
-          minimaxAi: 'ذكاء Minimax',
-          randomAi: 'ذكاء عشوائي',
-          aiX: 'ذكاء X',
-          aiO: 'ذكاء O',
+          ai: 'الذكاء الاصطناعي',
+          minimaxAi: 'ذكاء Minimax الاصطناعي',
+          randomAi: 'ذكاء اصطناعي عشوائي',
+          aiX: 'ذكاء اصطناعي X',
+          aiO: 'ذكاء اصطناعي O',
           player1: 'اللاعب 1',
           player2: 'اللاعب 2',
         }
