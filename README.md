@@ -2,9 +2,11 @@
 
 Modern Tic Tac Toe AI web game built with React, Vite, Tailwind CSS, and Framer Motion.
 
+---
+
 ## 🚀 Live Demo
 
-🔗 Play Now:
+🔗 Play Now:  
 https://tic-tac-toe-web-7t8d-25my2pbut-mohsen-mohamed-20s-projects.vercel.app
 
 ---
@@ -15,11 +17,11 @@ https://tic-tac-toe-web-7t8d-25my2pbut-mohsen-mohamed-20s-projects.vercel.app
 - Human vs Human
 - AI vs AI Demo
 - Minimax AI Algorithm
-- Difficulty Levels
+- Multiple Difficulty Levels
 - Neon Dark UI
 - Smooth Animations
 - Responsive Mobile Design
-- Scoreboard
+- Scoreboard System
 - Game Reset
 - Modern Web Experience
 
@@ -37,25 +39,15 @@ https://tic-tac-toe-web-7t8d-25my2pbut-mohsen-mohamed-20s-projects.vercel.app
 
 ---
 
-## 📸 Screenshots
-
-### 🎮 Main Menu
-![Main Menu](./screenshots/main-menu.png)
-
-### 🤖 Gameplay
-![Gameplay](./screenshots/gameplay.png)
-
-### 📱 Mobile View
-![Mobile View](./screenshots/mobile-view.png)
-
----
-
 ## ⚡ Installation
 
 ```bash
 git clone https://github.com/Mohsen-Mohamed-20/TicTacToe-Web.git
+
 cd TicTacToe-Web
+
 npm install
+
 npm run dev
 ```
 
@@ -73,6 +65,8 @@ npm run build
 
 This project is deployed on Vercel.
 
+Build command:
+
 ```bash
 npm run build
 ```
@@ -89,4 +83,5 @@ dist
 
 Made with ❤️ by Mohsen Mohamed
 
-GitHub: https://github.com/Mohsen-Mohamed-20
+🔗 GitHub:  
+https://github.com/Mohsen-Mohamed-20
